@@ -1,7 +1,9 @@
-import 'package:bytebank/screen/transferency/form.dart';
+import 'package:bytebank/screen/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(Bytebank());
+void main() {
+  runApp(Bytebank());
+}
 
 class Bytebank extends StatelessWidget {
   @override
@@ -16,7 +18,7 @@ class Bytebank extends StatelessWidget {
             textTheme: ButtonTextTheme.primary,
           )),
       //home: SignInDemo()
-      home: TransferencyMain(),
+      home: Dashboard(),
     );
   }
 }
