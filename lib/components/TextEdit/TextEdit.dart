@@ -5,8 +5,9 @@ class TextEdit extends StatelessWidget {
   final String label;
   final String hint;
   final IconData icon;
+  final String type;
 
-  const TextEdit({this.value, this.label, this.hint, this.icon});
+  const TextEdit({this.value, this.label, this.hint, this.icon, this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TextEdit extends StatelessWidget {
           labelText: label,
           hintText: hint,
         ),
-        keyboardType: TextInputType.number,
+        keyboardType: type != null ? TextInputType.text : TextInputType.number,
       ),
     );
   }
