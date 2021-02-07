@@ -1,11 +1,16 @@
-import 'package:bytebank/db/app_database.dart';
 import 'package:flutter/material.dart';
-
+import 'package:bytebank/dao/contact_dao.dart';
 import 'package:bytebank/models/contact.dart';
 import 'package:bytebank/screen/dashboard/contact_form.dart';
 
-class ContactList extends StatelessWidget {
+class ContactList extends StatefulWidget {
   // final List<Contact> _contacts = List();
+  @override
+  _ContactListState createState() => _ContactListState();
+}
+
+class _ContactListState extends State<ContactList> {
+  final ContactDao _dao = ContactDao();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +19,7 @@ class ContactList extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contact>>(
         initialData: List(),
-        future: findAll(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -40,7 +45,28 @@ class ContactList extends StatelessWidget {
                 itemCount: contacts.length,
                 itemBuilder: (context, index) {
                   final Contact contact = contacts[index];
-                  return ContactItem(contact);
+                  return Dismissible(
+                    direction: DismissDirection.endToStart,
+                    key: Key(contact.id.toString()),
+                    onDismissed: (direction) async {
+                      final String name = contact.name;
+                      await _dao.delete(contact.id);
+                      Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text("$name excluido")));
+                    },
+                    background: Container(
+                      alignment: AlignmentDirectional.centerEnd,
+                      color: Colors.red,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    child: ContactItem(contact),
+                  );
                 },
               );
               break;
@@ -50,9 +76,11 @@ class ContactList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return ContactForm();
-          })).then((value) => {});
+          Navigator.of(context)
+              .push(MaterialPageRoute(
+                builder: (context) => ContactForm(),
+              ))
+              .then((value) => {setState(() {})});
         },
         child: Icon(Icons.add),
       ),
