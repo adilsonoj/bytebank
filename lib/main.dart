@@ -1,4 +1,6 @@
 import 'package:bytebank/screen/dashboard/dashboard.dart';
+import 'package:bytebank/screen/transferency/dashboard_transferency.dart';
+import 'package:bytebank/screen/transferency/list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +20,7 @@ class Bytebank extends StatelessWidget {
             textTheme: ButtonTextTheme.primary,
           )),
       //home: SignInDemo()
-      home: Dashboard(),
+      home: DashboardTransferencia(),
     );
   }
 }
