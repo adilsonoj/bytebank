@@ -5,9 +5,6 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:async';
-import 'dart:convert' show json;
-
-import "package:http/http.dart" as http;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

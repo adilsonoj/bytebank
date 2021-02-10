@@ -1,10 +1,23 @@
-import 'package:bytebank/screen/dashboard/dashboard.dart';
-import 'package:bytebank/screen/transferency/dashboard_transferency.dart';
-import 'package:bytebank/screen/transferency/list.dart';
+import 'package:bytebank/models/saldo.dart';
+import 'package:bytebank/models/transferencies.dart';
+import 'package:bytebank/screen/conta/dashboard_transferency.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(Bytebank());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => Saldo(0),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Transferencies(),
+        ),
+      ],
+      child: Bytebank(),
+    ),
+  );
 }
 
 class Bytebank extends StatelessWidget {
