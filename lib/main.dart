@@ -1,6 +1,7 @@
 import 'package:bytebank/models/saldo.dart';
 import 'package:bytebank/models/transferencies.dart';
 import 'package:bytebank/screen/conta/dashboard_transferency.dart';
+import 'package:bytebank/screen/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,16 +25,16 @@ class Bytebank extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Demo",
-      theme: ThemeData(
-          primaryColor: Colors.green[900],
-          accentColor: Colors.blueAccent[700],
-          buttonTheme: ButtonThemeData(
-            buttonColor: Colors.blueAccent[700],
-            textTheme: ButtonTextTheme.primary,
-          )),
-      //home: SignInDemo()
-      home: DashboardTransferencia(),
-    );
+        title: "Flutter Demo",
+        theme: ThemeData(
+            primaryColor: Colors.green[900],
+            accentColor: Colors.blueAccent[700],
+            buttonTheme: ButtonThemeData(
+              buttonColor: Colors.blueAccent[700],
+              textTheme: ButtonTextTheme.primary,
+            )),
+        //home: SignInDemo()
+        // home: DashboardTransferencia(),
+        home: Dashboard());
   }
 }
