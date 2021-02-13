@@ -1,3 +1,4 @@
+import 'package:bytebank/components/progress.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank/dao/contact_dao.dart';
 import 'package:bytebank/models/contact.dart';
@@ -25,16 +26,7 @@ class _ContactListState extends State<ContactList> {
             case ConnectionState.none:
               break;
             case ConnectionState.waiting:
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    Text('Loadind...'),
-                  ],
-                ),
-              );
+              return Progress();
               break;
             case ConnectionState.active:
               // se fosse um download consegue pegar o progresso(stream)

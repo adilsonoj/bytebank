@@ -1,4 +1,5 @@
 import 'package:bytebank/screen/conta/dashboard_transferency.dart';
+import 'package:bytebank/screen/conta/transaction_list.dart';
 import 'package:bytebank/screen/dashboard/card.dart';
 import 'package:bytebank/screen/dashboard/contact_list.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,11 @@ class Dashboard extends StatelessWidget {
                   },
                 ),
                 DashboardCard(
-                  'Transfer',
+                  'TransactionFeed',
                   Icons.monetization_on,
                   onClick: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => DashboardTransferencia(),
+                      builder: (context) => TransactionsList(),
                     ));
                   },
                 ),
